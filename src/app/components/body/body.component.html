@@ -1,0 +1,97 @@
+<app-header></app-header>
+<form action="" [formGroup]="formularioProducto">
+
+  <p-inputGroup class="p-m-2">
+      <p-inputGroupAddon>
+          <i class="pi pi-key"></i>
+      </p-inputGroupAddon>
+      <input pInputText placeholder="Id del Producto" formControlName="idDelProducto"/>
+  </p-inputGroup>
+
+
+  <p-inputGroup class="p-m-2">
+    <p-inputGroupAddon>
+        <i class="pi pi-barcode"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="Nombre del Producto"  formControlName="nombreProducto"/>
+</p-inputGroup>
+
+
+<p-inputGroup class="p-m-2">
+  <p-inputGroupAddon>
+      <i class="pi pi-info-circle"></i>
+  </p-inputGroupAddon>
+  <input pInputText placeholder="Categoría" formControlName="categoriaProducto"/>
+</p-inputGroup>
+
+
+<p-inputGroup class="p-m-2">
+  <p-inputGroupAddon>
+      <i class="pi pi-dollar"></i>
+  </p-inputGroupAddon>
+  <input pInputText placeholder="Precio" formControlName="precioProducto"/>
+</p-inputGroup>
+
+<div class="p-m-3 p-d-flex p-jc-center">
+  <p-button label="CRUD" [raised]="true" severity="secondary" (click)="crearProducto()"/>
+</div>
+</form>
+
+<div class="card">
+  <p-table [value]="productos" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Categoria</th>
+              <th>Precio</th>
+              <th>Editar o Eliminar</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-producto>
+          <tr>
+              <td>{{ producto.idDelProducto }}</td>
+              <td>{{ producto.nombreProducto }}</td>
+              <td>{{ producto.categoriaProducto }}</td>
+              <td>{{ producto.precioProducto }}</td>
+              <div class="flex justify-content-center flex-wrap gap-3 mb-4">
+                <p-button class="p-m-5" icon="pi pi-pencil" (click)="activador(producto)"/>
+                <p-button icon="pi pi-times" severity="danger" (click)="eliminarProducto(producto.idDelProducto)"/>
+            </div>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+
+<p-dialog header="Actualizar"  [(visible)]="display" >
+  <form action="" [formGroup]="formularioProducto">
+  
+    <p-inputGroup class="p-m-2">
+      <p-inputGroupAddon>
+          <i class="pi pi-barcode"></i>
+      </p-inputGroupAddon>
+      <input pInputText placeholder="Nombre del Producto"  formControlName="nombreProducto"/>
+  </p-inputGroup>
+  
+  
+  <p-inputGroup class="p-m-2">
+    <p-inputGroupAddon>
+        <i class="pi pi-info-circle"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="Categoría" formControlName="categoriaProducto"/>
+  </p-inputGroup>
+  
+  
+  <p-inputGroup class="p-m-2">
+    <p-inputGroupAddon>
+        <i class="pi pi-dollar"></i>
+    </p-inputGroupAddon>
+    <input pInputText placeholder="Precio" formControlName="precioProducto"/>
+  </p-inputGroup>
+  
+  <div class="p-m-3 p-d-flex p-jc-center">
+    <p-button label="Actualizar" [raised]="true" severity="secondary" (click)="actualizarProducto()"/>
+  </div>
+  </form>
+</p-dialog>
