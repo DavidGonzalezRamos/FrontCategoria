@@ -6,8 +6,9 @@ import { Producto } from '../models/Producto';
   providedIn: 'root'
 })
 export class ProductoService {
-  //rutaGlobal = 'http://localhost:8080/producto/'
-  rutaGlobal = 'keen-surprise-production.up.railway.app'
+  //rutaGlobal = 'http://localhost:8080/producto/''
+  rutaGlobal = 'https://keen-surprise-production.up.railway.app/producto/';
+
 
   constructor(private http: HttpClient) { }
 
